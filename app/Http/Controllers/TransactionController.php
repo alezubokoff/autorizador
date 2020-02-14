@@ -20,7 +20,7 @@ class TransactionController extends Controller
      */
     public function authorizer(Request $request)
     {
-        if ($request->value <= 0 && $request->value >= 100.0) {
+        if ($request->value <= 0 || $request->value >= 100.0) {
             return response()->json(['message' => 'Transação não autorizada.'], 401);
         }
         return response()->json(['message' => 'Transação autorizada.', 'value' => $request->value]);
