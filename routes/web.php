@@ -15,8 +15,6 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => 'transaction'], function () use ($router) {
-    $router->get('/', function () {
-        return response()->json(['transacao' => 'autorizada']);
-    });
+$router->group(['prefix' => '/transaction'], function () use ($router) {
+    $router->post('/', 'TransactionController@authorizer');
 });
